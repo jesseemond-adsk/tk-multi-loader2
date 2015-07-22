@@ -52,7 +52,7 @@ class SgLatestPublishModel(ShotgunOverlayModel):
                                      parent,
                                      overlay_widget,
                                      download_thumbs=app.get_setting("download_thumbnails"),
-                                     schema_generation=6,
+                                     schema_generation=7,
                                      bg_load_thumbs=True)
 
     ############################################################################################

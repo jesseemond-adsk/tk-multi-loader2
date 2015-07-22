@@ -40,7 +40,7 @@ class SgPublishTypeModel(ShotgunOverlayModel):
                                      parent, 
                                      overlay_widget, 
                                      download_thumbs=False,
-                                     schema_generation=2,
+                                     schema_generation=3,
                                      bg_load_thumbs=True)
         
         self._action_manager = action_manager
