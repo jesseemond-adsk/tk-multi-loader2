@@ -774,6 +774,13 @@ background-image: url(:/res/right_arrow_pressed.png);
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QCheckBox" name="show_deprecated_files">
+        <property name="text">
+         <string>Show deprecated files</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
