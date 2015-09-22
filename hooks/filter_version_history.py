@@ -19,16 +19,16 @@ class FilterVersionHistory(Hook):
     published file
     """
     
-    def execute(self, versions, **kwargs):
+    def execute(self, publishes, **kwargs):
         """
         Main hook entry point
         
-        :param versions:     List of dictionaries 
+        :param publishes:    List of dictionaries 
                              A list of  dictionaries for the current published file within the app.  Each
                              item in the list is a Dictionary of the form:
                              
                              {
-                                 "sg_version_history" : {Shotgun entity dictionary for a Published File entity}
+                                 "sg_publish" : {Shotgun entity dictionary for a Published File entity}
                              }
                              
                                                          
@@ -38,4 +38,4 @@ class FilterVersionHistory(Hook):
         app = self.parent
 
         # the default implementation just returns the unfiltered list:
-        return versions
+        return publishes

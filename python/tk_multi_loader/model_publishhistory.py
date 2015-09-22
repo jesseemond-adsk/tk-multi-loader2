@@ -114,9 +114,9 @@ class SgPublishHistoryModel(ShotgunOverlayModel):
 
             # Constructing a wrapper dictionary so that it's future proof to support returning
             # additional information from the hook
-            hook_versions_list = [{"sg_version_history":sg_data} for sg_data in sg_data_list]
+            hook_versions_list = [{"sg_publish":sg_data} for sg_data in sg_data_list]
 
-            hook_versions_list = app.execute_hook("filter_version_history_hook", versions=hook_versions_list)
+            hook_versions_list = app.execute_hook("filter_version_history_hook", publishes=hook_versions_list)
             if not isinstance(hook_versions_list, list):
                 app.log_error("filter_version_history_hook returned an unexpected result type '%s' - ignoring!"
                               % type(hook_versions_list).__name__)
