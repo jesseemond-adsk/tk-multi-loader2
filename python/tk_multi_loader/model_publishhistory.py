@@ -125,7 +125,7 @@ class SgPublishHistoryModel(ShotgunOverlayModel):
             # split back out publishes:
             sg_data_list = []
             for item in hook_versions_list:
-                sg_data = item.get("sg_version_history")
+                sg_data = item.get("sg_publish")
                 if sg_data:
                     sg_data_list.append(sg_data)
 
