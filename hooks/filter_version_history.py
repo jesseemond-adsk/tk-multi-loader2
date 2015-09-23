@@ -22,6 +22,10 @@ class FilterVersionHistory(Hook):
     def execute(self, publishes, **kwargs):
         """
         Main hook entry point
+
+        .. note:: maintains an interface identical to filter_publishes to allow
+                  reuse of filters.
+
         
         :param publishes:    List of dictionaries 
                              A list of  dictionaries for the current published file within the app.  Each
