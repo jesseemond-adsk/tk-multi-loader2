@@ -23,7 +23,7 @@ class FilterVersionHistory(Hook):
         """
         Main hook entry point
 
-        .. note:: maintains an interface identical to filter_publishes to allow
+        .. note:: Maintains an interface identical to filter_publishes to allow
                   reuse of filters.
 
         
