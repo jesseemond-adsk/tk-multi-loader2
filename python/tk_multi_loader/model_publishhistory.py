@@ -96,45 +96,6 @@ class SgPublishHistoryModel(ShotgunOverlayModel):
     ############################################################################################
     # subclassed methods
 
-    def _before_data_processing(self, sg_data_list):
-        """
-        Called just after data has been retrieved from Shotgun but before any processing
-        takes place. This makes it possible for deriving classes to perform summaries,
-        calculations and other manipulations of the data before it is passed on to the model
-        class.
-
-        :param sg_data_list: list of shotgun dictionaries, as retunrned by the find() call.
-        :returns: should return a list of shotgun dictionaries, on the same form as the input.
-        """
-        app = sgtk.platform.current_bundle()
-
-        try:
-            # let the filter_version_history_hook have a chance to filter
-            # the list of publishes:
-
-            # Constructing a wrapper dictionary so that it's future proof to support returning
-            # additional information from the hook
-            hook_versions_list = [{"sg_publish":sg_data} for sg_data in sg_data_list]
-
-            hook_versions_list = app.execute_hook("filter_version_history_hook", publishes=hook_versions_list)
-            if not isinstance(hook_versions_list, list):
-                app.log_error("filter_version_history_hook returned an unexpected result type '%s' - ignoring!"
-                              % type(hook_versions_list).__name__)
-                hook_versions_list = []
-
-            # split back out publishes:
-            sg_data_list = []
-            for item in hook_versions_list:
-                sg_data = item.get("sg_publish")
-                if sg_data:
-                    sg_data_list.append(sg_data)
-
-        except Exception:
-            app.log_exception("Failed to execute 'filter_version_history_hook'!")
-            sg_data_list = []
-
-        return sg_data_list
-
     def _populate_item(self, item, sg_data):
         """
         Whenever an item is constructed, this methods is called. It allows subclasses to intercept
