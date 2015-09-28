@@ -260,8 +260,6 @@ class AppDialog(QtGui.QWidget):
         show_details = self._settings_manager.retrieve("show_details", False)
         self._set_details_pane_visiblity(show_details)
 
-
-
         # trigger an initial evaluation of filter proxy model
         self._apply_type_filters_on_publishes()
 
@@ -671,6 +669,7 @@ class AppDialog(QtGui.QWidget):
                 self._publish_history_model.load_data(sg_data)
 
             self.ui.details_header.updateGeometry()
+
 
     def _on_detail_version_playback(self):
         """
