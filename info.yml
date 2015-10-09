@@ -27,7 +27,8 @@ configuration:
     disable_deprecated_files_actions:
         type: bool
         default_value: false
-        description: If loading actions should be disabled on deprecated files.
+        description: If true, loading actions will be disabled for deprecated
+                     files.
 
 
     # hooks
