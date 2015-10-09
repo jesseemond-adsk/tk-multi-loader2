@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'dialog.ui'
 #
-#      by: pyside-uic 0.2.13 running on PySide 1.1.1
+#      by: pyside-uic 0.2.15 running on PySide 1.2.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -342,6 +342,9 @@ class Ui_Dialog(object):
         self.history_view.setUniformItemSizes(True)
         self.history_view.setObjectName("history_view")
         self.verticalLayout_3.addWidget(self.history_view)
+        self.show_deprecated_files = QtGui.QCheckBox(self.details)
+        self.show_deprecated_files.setObjectName("show_deprecated_files")
+        self.verticalLayout_3.addWidget(self.show_deprecated_files)
         self.horizontalLayout_3.addWidget(self.details)
         self.horizontalLayout_3.setStretch(0, 1)
         self.horizontalLayout_3.setStretch(1, 2)
@@ -383,5 +386,6 @@ class Ui_Dialog(object):
         self.detail_playback_btn.setToolTip(QtGui.QApplication.translate("Dialog", "The most recent published version has some playable media associated. Click this button to launch the Shotgun <b>Screening Room</b> web player to see the review version and any notes and comments that have been submitted.", None, QtGui.QApplication.UnicodeUTF8))
         self.detail_actions_btn.setText(QtGui.QApplication.translate("Dialog", "Actions", None, QtGui.QApplication.UnicodeUTF8))
         self.version_history_label.setText(QtGui.QApplication.translate("Dialog", "<small>Complete Version History</small>", None, QtGui.QApplication.UnicodeUTF8))
+        self.show_deprecated_files.setText(QtGui.QApplication.translate("Dialog", "Show deprecated files", None, QtGui.QApplication.UnicodeUTF8))
 
 from . import resources_rc

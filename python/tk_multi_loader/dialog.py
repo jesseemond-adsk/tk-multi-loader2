@@ -84,6 +84,7 @@ class AppDialog(QtGui.QWidget):
 
         self._details_action_menu = QtGui.QMenu()
         self.ui.detail_actions_btn.setMenu(self._details_action_menu)
+        self.ui.show_deprecated_files.clicked.connect(self._on_show_deprecated_files_clicked)
 
         self.ui.info.clicked.connect(self._toggle_details_pane)
 
@@ -250,6 +251,10 @@ class AppDialog(QtGui.QWidget):
         self._entity_presets = {}
         self._current_entity_preset = None
         self._load_entity_presets()
+
+        # load visibility state for deprecated files
+        show_deprecated = self._settings_manager.retrieve("show_deprecated_files", False)
+        self.ui.show_deprecated_files.setChecked(show_deprecated)
 
         # load visibility state for details pane
         show_details = self._settings_manager.retrieve("show_details", False)
@@ -528,6 +533,7 @@ class AppDialog(QtGui.QWidget):
             # hide actions and playback stuff
             self.ui.detail_actions_btn.setVisible(is_publish)
             self.ui.detail_playback_btn.setVisible(is_publish)
+            self.ui.show_deprecated_files.setVisible(is_publish)
 
         # note - before the UI has been shown, querying isVisible on the actual
         # widget doesn't work here so use member variable to track state instead
@@ -673,6 +679,14 @@ class AppDialog(QtGui.QWidget):
         # a member variable which olds the current screening room url.
         if self._current_version_detail_playback_url:
             QtGui.QDesktopServices.openUrl(QtCore.QUrl(self._current_version_detail_playback_url))
+
+    def _on_show_deprecated_files_clicked(self):
+        """
+        Callback when someone clicks the toggle to show/hide deprecated files
+        """
+        visible = self.ui.show_deprecated_files.isChecked()
+        self._settings_manager.store("show_deprecated_files", visible)
+        self._publish_history_model.async_refresh()
 
     ########################################################################################
     # history related
